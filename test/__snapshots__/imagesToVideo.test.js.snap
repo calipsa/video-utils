@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Images to video Should convert images to video 1`] = `
+Object {
+  "stream": "pg4yV50Qc5Z0rQAPFikE5YGrBelIgZraGiXiwCi/V7s=",
+  "string": "pg4yV50Qc5Z0rQAPFikE5YGrBelIgZraGiXiwCi/V7s=",
+}
+`;
