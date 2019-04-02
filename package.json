@@ -1,6 +1,6 @@
 {
   "name": "@calipsa/video-utils",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Video utilities",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -21,17 +21,17 @@
   "author": "Anton Veselev",
   "license": "ISC",
   "dependencies": {
-    "@calipsa/stream-utils": "^0.1.0",
+    "@calipsa/stream-utils": "^0.2.0",
     "@types/fluent-ffmpeg": "^2.1.9",
     "@types/is-stream": "^1.1.0",
-    "@types/node": "^11.12.2",
+    "@types/node": "^11.13.0",
     "ffmpeg-stream": "^0.5.0",
     "fluent-ffmpeg": "^2.1.2",
     "is-stream": "^1.1.0",
     "tmp-promise": "^1.0.5"
   },
   "devDependencies": {
-    "jest": "^24.5.0",
+    "jest": "^24.6.0",
     "lodash": "^4.17.11",
     "typescript": "^3.4.1"
   }
