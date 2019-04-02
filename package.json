@@ -1,6 +1,6 @@
 {
   "name": "@calipsa/video-utils",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Video utilities",
   "main": "build/index.js",
   "types": "build/index.d.ts",
