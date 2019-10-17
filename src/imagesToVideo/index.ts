@@ -32,7 +32,7 @@ export default ({
     f: 'avi',
     vcodec: 'wmv2',
     // buffer: true,
-  }) as Writable
+  })
 
   streamImages(images, input)
   converter.run()
