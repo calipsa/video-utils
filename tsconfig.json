@@ -10,7 +10,7 @@
     // "allowSyntheticDefaultImports": true,
     "strictNullChecks": true,
     "noImplicitThis": true,
-    "noImplicitAny": true,
+    // "noImplicitAny": true, // uncomment when tmp types are fixed
     "downlevelIteration": true,
     "lib": [
       "esnext"
