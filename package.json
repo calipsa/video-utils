@@ -2,12 +2,12 @@
   "name": "@calipsa/video-utils",
   "version": "0.1.3",
   "description": "Video utilities",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest --no-cache",
-    "build": "rm -rf build && tsc",
-    "build-publish": "npm run build && np"
+    "build": "rm -rf dist && tsc",
+    "release": "np"
   },
   "repository": {
     "type": "git",
@@ -21,19 +21,18 @@
   "author": "Anton Veselev",
   "license": "ISC",
   "dependencies": {
-    "@calipsa/stream-utils": "^0.2.1",
-    "@types/fluent-ffmpeg": "^2.1.9",
-    "@types/is-stream": "^1.1.0",
-    "@types/node": "^11.13.0",
-    "ffmpeg-stream": "^0.5.0",
+    "@calipsa/stream-utils": "^0.3.0",
+    "@types/fluent-ffmpeg": "^2.1.11",
+    "@types/node": "^12.11.1",
+    "ffmpeg-stream": "^0.6.0",
     "fluent-ffmpeg": "^2.1.2",
-    "is-stream": "^1.1.0",
-    "tmp-promise": "^1.0.5"
+    "is-stream": "^2.0.0",
+    "tmp-promise": "^2.0.2"
   },
   "devDependencies": {
-    "jest": "^24.7.1",
-    "lodash": "^4.17.11",
-    "np": "^4.0.2",
-    "typescript": "^3.4.2"
+    "jest": "^24.9.0",
+    "lodash": "^4.17.15",
+    "np": "^5.1.1",
+    "typescript": "^3.6.4"
   }
 }

@@ -7,7 +7,7 @@ const {
   flow,
 } = require('lodash')
 
-const { getVideoSnapshots } = require('../build')
+const { getVideoSnapshots } = require('../dist')
 const getHash = require('./utils/getHash')
 
 const files = [

@@ -6,7 +6,7 @@ const {
   identity,
 } = require('lodash')
 
-const { imagesToVideo } = require('../build')
+const { imagesToVideo } = require('../dist')
 const getHash = require('./utils/getHash')
 
 const DIR = Path.join(__dirname, 'images')

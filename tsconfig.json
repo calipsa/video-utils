@@ -10,12 +10,12 @@
     // "allowSyntheticDefaultImports": true,
     "strictNullChecks": true,
     "noImplicitThis": true,
-    // "noImplicitAny": true,
+    "noImplicitAny": true,
     "downlevelIteration": true,
     "lib": [
-      "es2017"
+      "esnext"
     ],
-    "outDir": "build"
+    "outDir": "dist"
   },
   "exclude": [
     "node_modules",
