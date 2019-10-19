@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest --no-cache",
+    "lint": "eslint './src/**/*.ts'",
     "build": "rm -rf dist && tsc",
     "release": "np"
   },
@@ -30,6 +31,8 @@
     "tmp-promise": "^2.0.2"
   },
   "devDependencies": {
+    "@calipsa/eslint-config-typescript": "^1.0.1",
+    "eslint": "^6.5.1",
     "jest": "^24.9.0",
     "lodash": "^4.17.15",
     "np": "^5.1.1",

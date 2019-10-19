@@ -1,4 +1,5 @@
 import * as ffmpeg from 'fluent-ffmpeg'
+// eslint-disable-next-line import/order
 import {
   StreamWithFrames,
   bufferToStream,
@@ -13,6 +14,7 @@ export default (input: Input, rate: number, format: string) =>
     const vcodec = format === 'png' ? 'png' : 'mjpeg'
 
     if (Buffer.isBuffer(input)) {
+      // eslint-disable-next-line no-param-reassign
       input = bufferToStream(input)
     }
 
