@@ -8,7 +8,8 @@
     "test": "jest --no-cache",
     "lint": "eslint './src/**/*.ts'",
     "build": "rm -rf dist && tsc",
-    "release": "npm run build && np"
+    "version": "npm run build",
+    "release": "np"
   },
   "repository": {
     "type": "git",
