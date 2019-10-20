@@ -6,7 +6,7 @@ import streamImages from './streamImages'
 
 interface Params {
   images: PathOrReadable[],
-  fps: number
+  fps: number,
 }
 
 export default ({
