@@ -1,11 +1,11 @@
-import * as ffmpeg from 'fluent-ffmpeg'
+import ffmpeg from 'fluent-ffmpeg'
 // eslint-disable-next-line import/order
 import {
   StreamWithFrames,
   bufferToStream,
 } from '@calipsa/stream-utils'
 
-import { Input } from '../types'
+import type { Input } from '../types'
 
 export default (input: Input, rate: number, format: string) =>
   new Promise<Buffer[]>((resolve, reject) => {

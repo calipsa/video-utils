@@ -1,6 +1,7 @@
 import { Writable } from 'stream'
 
-import { PathOrReadable } from '../types'
+import type { PathOrReadable } from '../types'
+
 import imageToStream from './imageToStream'
 
 export default async (imageInputs: PathOrReadable[], ffmpegInput: Writable) => {

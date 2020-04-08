@@ -1,7 +1,8 @@
 import { Writable } from 'stream'
+
 import { ffmpeg } from 'ffmpeg-stream'
 
-import { PathOrReadable } from '../types'
+import type { PathOrReadable } from '../types'
 import streamImages from './streamImages'
 
 interface Params {
