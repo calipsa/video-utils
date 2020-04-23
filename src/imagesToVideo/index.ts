@@ -3,6 +3,8 @@ import { Writable } from 'stream'
 import { ffmpeg } from 'ffmpeg-stream'
 
 import type { PathOrReadable } from '../types'
+
+import getFfmpegOptions from './getFfmpegOptions'
 import streamImages from './streamImages'
 
 type Format = 'wmv' | 'mp4'
@@ -25,19 +27,7 @@ export default ({
     r: fps,
   }) as Writable
 
-  // const output = converter.output({
-  //   f: 'mpegts',
-  //   vcodec: 'mpeg2video',
-  //   tune: 'zerolatency',
-  //   preset: 'ultrafast',
-  //   'q:v': 1,
-  // })
-
-  const output = converter.output({
-    f: 'avi',
-    vcodec: 'wmv2',
-    // buffer: true,
-  })
+  const output = converter.output(getFfmpegOptions(format))
 
   streamImages(images, input)
   converter.run()

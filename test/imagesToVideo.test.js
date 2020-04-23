@@ -8,11 +8,12 @@ const getHash = require('./utils/getHash')
 
 const formats = [
   'wmv',
+  'mp4',
 ]
 
-const DIR = Path.join(__dirname, 'images')
-const imageFileNames = fs.readdirSync(DIR).filter(name => name.endsWith('.jpg'))
-const imagePaths = imageFileNames.sort().map(n => Path.join(DIR, n))
+const IMAGES_DIR = Path.join(__dirname, 'images')
+const imageFileNames = fs.readdirSync(IMAGES_DIR).filter(name => name.endsWith('.jpg'))
+const imagePaths = imageFileNames.sort().map(n => Path.join(IMAGES_DIR, n))
 
 const pathToInput = {
   string: identity,
@@ -26,10 +27,10 @@ describe('Images to video', () => {
   })
 
   it('Should convert images to video', async () => {
-    const fileNames = await fs.promises.readdir(DIR)
+    const fileNames = await fs.promises.readdir(IMAGES_DIR)
     for (const format of formats) {
       const types = Object.keys(pathToInput)
-      const promises = types.map(async (type) => {
+      const bufferPromises = types.map(async (type) => {
         const f = pathToInput[type]
         const imagePromises = imagePaths.map(f)
         const images = await Promise.all(imagePromises)
@@ -38,9 +39,13 @@ describe('Images to video', () => {
           format,
           fps: 10,
         })
-        const buffer = await streamToBuffer(stream)
-        return getHash(buffer)
+        return await streamToBuffer(stream)
       })
+
+      const firstBuffer = await bufferPromises[0]
+      // await fs.promises.writeFile(`./video.${format}`, firstBuffer)
+
+      const promises = bufferPromises.map(p => p.then(getHash))
 
       const first = await promises[0]
       expect(first).toMatchSnapshot(format)
