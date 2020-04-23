@@ -3,7 +3,7 @@ import Path from 'path'
 import { streamToBuffer } from '@calipsa/stream-utils'
 import { identity } from 'lodash'
 
-import { imagesToVideo } from '../src'
+import { imagesToVideoStream } from '../src'
 import getHash from './utils/getHash'
 
 const formats = [
@@ -21,7 +21,7 @@ const pathToInput = {
   buffer: (path: string) => fs.promises.readFile(path, null)
 } as const
 
-describe('Images to video', () => {
+describe('Images to video stream', () => {
   beforeEach(() => {
     jest.setTimeout(120000)
   })
@@ -34,7 +34,7 @@ describe('Images to video', () => {
         const f = pathToInput[type]
         const imagePromises = imagePaths.map(f) as any[]
         const images = await Promise.all(imagePromises)
-        const stream = imagesToVideo({
+        const stream = imagesToVideoStream({
           images,
           format,
           fps: 10,
@@ -43,7 +43,7 @@ describe('Images to video', () => {
       })
 
       const firstBuffer = await bufferPromises[0]
-      await fs.promises.writeFile(`./video.${format}`, firstBuffer)
+      // await fs.promises.writeFile(`./video.${format}`, firstBuffer)
 
       const promises = bufferPromises.map(p => p.then(getHash))
 
@@ -51,7 +51,6 @@ describe('Images to video', () => {
       expect(first).toMatchSnapshot(format)
   
       for (let i = 1; i < types.length; ++i) {
-        const type = types[i]
         const v = await promises[i]
         expect(v).toEqual(first)
       }  
