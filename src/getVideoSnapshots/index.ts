@@ -1,8 +1,10 @@
 import { promises as fsPromises } from 'fs'
+
 import * as tmp from 'tmp-promise'
 
 import type { Input } from '../types'
 import noop from '../utils/noop'
+
 import getImageBuffers from './getImageBuffers'
 
 interface Options {
