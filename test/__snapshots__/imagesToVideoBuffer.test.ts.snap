@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Images to video buffer Should convert images to video: mp4 1`] = `"0+KiJMjQ/WxUz0x8IXEEUJAKjyB71Hwg6KmR0bNs6BY="`;

@@ -1,7 +1,9 @@
 import getVideoSnapshots from './getVideoSnapshots'
-import imagesToVideo from './imagesToVideo'
+import imagesToVideoStream from './imagesToVideoStream'
+import imagesToVideoBuffer from './imagesToVideoBuffer'
 
 export {
   getVideoSnapshots,
-  imagesToVideo,
+  imagesToVideoStream,
+  imagesToVideoBuffer,
 }
