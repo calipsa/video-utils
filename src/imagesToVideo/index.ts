@@ -5,13 +5,17 @@ import { ffmpeg } from 'ffmpeg-stream'
 import type { PathOrReadable } from '../types'
 import streamImages from './streamImages'
 
+type Format = 'wmv' | 'mp4'
+
 interface Params {
   images: PathOrReadable[],
+  format: Format,
   fps: number,
 }
 
 export default ({
   images,
+  format,
   fps,
 }: Params) => {
   const converter = ffmpeg()

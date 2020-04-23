@@ -1,9 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Images to video Should convert images to video 1`] = `
-Object {
-  "buffer": "pcVhb8WV1zQglH7jJAoJ0JIbbUTgtZN9ckLKnBIH83M=",
-  "stream": "pcVhb8WV1zQglH7jJAoJ0JIbbUTgtZN9ckLKnBIH83M=",
-  "string": "pcVhb8WV1zQglH7jJAoJ0JIbbUTgtZN9ckLKnBIH83M=",
-}
-`;
+exports[`Images to video Should convert images to video: wmv 1`] = `"pcVhb8WV1zQglH7jJAoJ0JIbbUTgtZN9ckLKnBIH83M="`;

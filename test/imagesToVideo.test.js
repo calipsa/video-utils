@@ -6,6 +6,10 @@ const { identity } = require('lodash')
 const { imagesToVideo } = require('../dist')
 const getHash = require('./utils/getHash')
 
+const formats = [
+  'wmv',
+]
+
 const DIR = Path.join(__dirname, 'images')
 const imageFileNames = fs.readdirSync(DIR).filter(name => name.endsWith('.jpg'))
 const imagePaths = imageFileNames.sort().map(n => Path.join(DIR, n))
@@ -23,28 +27,29 @@ describe('Images to video', () => {
 
   it('Should convert images to video', async () => {
     const fileNames = await fs.promises.readdir(DIR)
-    const o = {}
-    const types = Object.keys(pathToInput)
-    const promises = types.map(async (type) => {
-      const f = pathToInput[type]
-      const imagePromises = imagePaths.map(f)
-      const images = await Promise.all(imagePromises)
-      const stream = imagesToVideo({
-        images,
-        fps: 10,
+    for (const format of formats) {
+      const types = Object.keys(pathToInput)
+      const promises = types.map(async (type) => {
+        const f = pathToInput[type]
+        const imagePromises = imagePaths.map(f)
+        const images = await Promise.all(imagePromises)
+        const stream = imagesToVideo({
+          images,
+          format,
+          fps: 10,
+        })
+        const buffer = await streamToBuffer(stream)
+        return getHash(buffer)
       })
-      const buffer = await streamToBuffer(stream)
-      return getHash(buffer)
-    })
 
-    for (let i = 0; i < types.length; ++i) {
-      const type = types[i]
-      o[type] = await promises[i]
-      if (i > 0) {
-        expect(o[type]).toEqual(o[types[0]])
-      }
+      const first = await promises[0]
+      expect(first).toMatchSnapshot(format)
+  
+      for (let i = 1; i < types.length; ++i) {
+        const type = types[i]
+        const v = await promises[i]
+        expect(v).toEqual(first)
+      }  
     }
-
-    expect(o).toMatchSnapshot()
   })
 })
