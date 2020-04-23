@@ -45,7 +45,7 @@ describe('Images to video', () => {
       o[type] = await promises[i]
       if (i > 0) {
         const areIdentical = isEqual(o[type], o[types[0]])
-        expect(areIdentical).toBe(true)
+        expect(o[type]).toEqual(o[types[0]])
       }
     }
 
