@@ -1,10 +1,7 @@
 const fs = require('fs')
 const Path = require('path')
 const { streamToBuffer } = require('@calipsa/stream-utils')
-const {
-  isEqual,
-  identity,
-} = require('lodash')
+const { identity } = require('lodash')
 
 const { imagesToVideo } = require('../dist')
 const getHash = require('./utils/getHash')
@@ -16,7 +13,7 @@ const imagePaths = imageFileNames.sort().map(n => Path.join(DIR, n))
 const pathToInput = {
   string: identity,
   stream: path => fs.createReadStream(path),
-  // buffer: flow(fs.createReadStream, streamToBuffer),
+  buffer: path => fs.promises.readFile(path, null)
 }
 
 describe('Images to video', () => {
@@ -44,7 +41,6 @@ describe('Images to video', () => {
       const type = types[i]
       o[type] = await promises[i]
       if (i > 0) {
-        const areIdentical = isEqual(o[type], o[types[0]])
         expect(o[type]).toEqual(o[types[0]])
       }
     }
