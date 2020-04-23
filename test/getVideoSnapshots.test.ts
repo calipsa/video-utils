@@ -1,14 +1,13 @@
-const fs = require('fs')
+import fs from 'fs'
 // const P = require('path')
-const { streamToBuffer } = require('@calipsa/stream-utils')
-const {
-  isEqual,
+import { streamToBuffer } from '@calipsa/stream-utils'
+import {
   identity,
   flow,
-} = require('lodash')
+} from 'lodash'
 
-const { getVideoSnapshots } = require('../dist')
-const getHash = require('./utils/getHash')
+import { getVideoSnapshots } from '../src'
+import getHash from './utils/getHash'
 
 const files = [
   'building.mp4',
@@ -19,9 +18,9 @@ const pathToInput = {
   string: identity,
   stream: path => fs.createReadStream(path),
   buffer: flow(fs.createReadStream, streamToBuffer),
-}
+} as const
 
-const getSnapshost = (input) =>
+const getSnapshost = (input: Parameters<(typeof getVideoSnapshots)>[0]['input']) =>
   getVideoSnapshots({
     input,
     rate: 1,

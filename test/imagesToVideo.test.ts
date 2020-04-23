@@ -1,15 +1,15 @@
-const fs = require('fs')
-const Path = require('path')
-const { streamToBuffer } = require('@calipsa/stream-utils')
-const { identity } = require('lodash')
+import fs from 'fs'
+import Path from 'path'
+import { streamToBuffer } from '@calipsa/stream-utils'
+import { identity } from 'lodash'
 
-const { imagesToVideo } = require('../dist')
-const getHash = require('./utils/getHash')
+import { imagesToVideo } from '../dist'
+import getHash from './utils/getHash'
 
 const formats = [
   'wmv',
   'mp4',
-]
+] as const
 
 const IMAGES_DIR = Path.join(__dirname, 'images')
 const imageFileNames = fs.readdirSync(IMAGES_DIR).filter(name => name.endsWith('.jpg'))
@@ -17,9 +17,9 @@ const imagePaths = imageFileNames.sort().map(n => Path.join(IMAGES_DIR, n))
 
 const pathToInput = {
   string: identity,
-  stream: path => fs.createReadStream(path),
-  buffer: path => fs.promises.readFile(path, null)
-}
+  stream: (path: string) => fs.createReadStream(path),
+  buffer: (path: string) => fs.promises.readFile(path, null)
+} as const
 
 describe('Images to video', () => {
   beforeEach(() => {
@@ -32,7 +32,7 @@ describe('Images to video', () => {
       const types = Object.keys(pathToInput)
       const bufferPromises = types.map(async (type) => {
         const f = pathToInput[type]
-        const imagePromises = imagePaths.map(f)
+        const imagePromises = imagePaths.map(f) as any[]
         const images = await Promise.all(imagePromises)
         const stream = imagesToVideo({
           images,
