@@ -2,7 +2,7 @@ type Format = 'wmv' | 'mp4'
 
 const options = {
   mp4: {
-    f: 'mpegts',
+    f: 'mp4',
     vcodec: 'libx264',
     tune: 'zerolatency',
     preset: 'ultrafast',

@@ -43,7 +43,7 @@ describe('Images to video', () => {
       })
 
       const firstBuffer = await bufferPromises[0]
-      // await fs.promises.writeFile(`./video.${format}`, firstBuffer)
+      await fs.promises.writeFile(`./video.${format}`, firstBuffer)
 
       const promises = bufferPromises.map(p => p.then(getHash))
 
