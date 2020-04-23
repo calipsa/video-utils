@@ -65,8 +65,7 @@ describe('Get video snapshots', () => {
         const p = hashesPromises[i]
         o[type] = await p
         if (i > 0) {
-          const areIdentical = isEqual(o[type], o[types[0]])
-          expect(areIdentical).toBe(true)
+          expect(o[type]).toEqual(o[types[0]])
         }
       }
       // await Promise.all(hashesPromises)
