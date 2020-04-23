@@ -3,7 +3,7 @@ import Path from 'path'
 import { streamToBuffer } from '@calipsa/stream-utils'
 import { identity } from 'lodash'
 
-import { imagesToVideo } from '../dist'
+import { imagesToVideo } from '../src'
 import getHash from './utils/getHash'
 
 const formats = [
