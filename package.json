@@ -25,16 +25,16 @@
   "dependencies": {
     "@calipsa/stream-utils": "^0.4.0",
     "@types/fluent-ffmpeg": "^2.1.14",
-    "@types/node": "^13.11.0",
+    "@types/node": "^13.13.2",
     "ffmpeg-stream": "^0.6.0",
     "fluent-ffmpeg": "^2.1.2",
     "is-stream": "^2.0.0",
     "tmp-promise": "^2.0.2"
   },
   "devDependencies": {
-    "@calipsa/eslint-config-typescript": "^1.3.0",
+    "@calipsa/eslint-config-typescript": "^1.5.0",
     "eslint": "^6.8.0",
-    "jest": "^25.3.0",
+    "jest": "^25.4.0",
     "lodash": "^4.17.15",
     "np": "^5.2.1",
     "typescript": "^3.8.3"
