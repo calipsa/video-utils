@@ -10,6 +10,4 @@ interface Params {
 export default ({
   images,
   fps,
-}: Params) => {
-  return convert(images, fps)
-}
+}: Params) => convert(images, fps)

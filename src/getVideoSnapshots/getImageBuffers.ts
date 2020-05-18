@@ -1,5 +1,4 @@
 import ffmpeg from 'fluent-ffmpeg'
-// eslint-disable-next-line import/order
 import {
   StreamWithFrames,
   bufferToStream,

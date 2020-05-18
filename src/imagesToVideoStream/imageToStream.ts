@@ -14,7 +14,7 @@ export default (imageInput: Input, ffmpegInput: Writable) =>
         ? bufferToStream(imageInput)
         : createReadStream(imageInput)
 
-    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const stream = input
       .on('end', resolve)
       .on('error', reject)
