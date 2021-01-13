@@ -12,6 +12,7 @@ interface Options {
   rate: number,
   format: 'jpg' | 'png',
   logError: (...args: any[]) => void,
+  fps?: number,
 }
 
 export default async ({
@@ -19,9 +20,10 @@ export default async ({
   rate = 1,
   format = 'jpg',
   logError = noop,
+  fps,
 }: Options) => {
   try {
-    return await getImageBuffers(input, rate, format)
+    return await getImageBuffers(input, rate, format, fps)
   } catch (err) {
     if (!Buffer.isBuffer(input)) {
       throw err
@@ -30,7 +32,7 @@ export default async ({
     const { path, cleanup } = await tmp.file()
     try {
       await fsPromises.writeFile(path, input, 'binary')
-      return await getImageBuffers(path, rate, format)
+      return await getImageBuffers(path, rate, format, fps)
     } finally {
       cleanup()
     }

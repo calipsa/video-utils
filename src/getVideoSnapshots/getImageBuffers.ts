@@ -6,7 +6,7 @@ import {
 
 import type { Input } from '../types'
 
-export default (input: Input, rate: number, format: string) =>
+export default (input: Input, rate: number, format: string, fps?: number) =>
   new Promise<Buffer[]>((resolve, reject) => {
     const outStream = new StreamWithFrames(rate)
 
@@ -32,5 +32,8 @@ export default (input: Input, rate: number, format: string) =>
         resolve(outStream.buffers)
       })
 
+    if (fps) {
+      proc.fps(fps)
+    }
     proc.run()
   })
