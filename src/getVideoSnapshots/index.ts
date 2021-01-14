@@ -1,6 +1,7 @@
 import { promises as fsPromises } from 'fs'
 
 import * as tmp from 'tmp-promise'
+import type { FfmpegCommand } from 'fluent-ffmpeg'
 
 import type { Input } from '../types'
 import noop from '../utils/noop'
@@ -12,7 +13,7 @@ interface Options {
   rate: number,
   format: 'jpg' | 'png',
   logError: (...args: any[]) => void,
-  fps?: number,
+  configureFfmpeg?: (ffmpegCommand: FfmpegCommand) => void,
 }
 
 export default async ({
@@ -20,10 +21,10 @@ export default async ({
   rate = 1,
   format = 'jpg',
   logError = noop,
-  fps,
+  configureFfmpeg,
 }: Options) => {
   try {
-    return await getImageBuffers(input, rate, format, fps)
+    return await getImageBuffers(input, rate, format, configureFfmpeg)
   } catch (err) {
     if (!Buffer.isBuffer(input)) {
       throw err
@@ -32,7 +33,7 @@ export default async ({
     const { path, cleanup } = await tmp.file()
     try {
       await fsPromises.writeFile(path, input, 'binary')
-      return await getImageBuffers(path, rate, format, fps)
+      return await getImageBuffers(path, rate, format, configureFfmpeg)
     } finally {
       cleanup()
     }

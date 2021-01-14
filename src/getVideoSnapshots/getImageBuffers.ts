@@ -1,4 +1,4 @@
-import ffmpeg from 'fluent-ffmpeg'
+import ffmpeg, { FfmpegCommand } from 'fluent-ffmpeg'
 import {
   StreamWithFrames,
   bufferToStream,
@@ -6,7 +6,12 @@ import {
 
 import type { Input } from '../types'
 
-export default (input: Input, rate: number, format: string, fps?: number) =>
+export default (
+  input: Input,
+  rate: number,
+  format: string,
+  configureFfmpeg?: (ffmpegCommand: FfmpegCommand) => void,
+) =>
   new Promise<Buffer[]>((resolve, reject) => {
     const outStream = new StreamWithFrames(rate)
 
@@ -32,8 +37,7 @@ export default (input: Input, rate: number, format: string, fps?: number) =>
         resolve(outStream.buffers)
       })
 
-    if (fps) {
-      proc.fps(fps)
-    }
+    configureFfmpeg?.(proc)
+
     proc.run()
   })
