@@ -16,7 +16,7 @@ export default async (images: Input[], fps: number) => {
 
   const { path, cleanup } = await tmp.file()
   try {
-    await new Promise<Buffer>((resolve, reject) => {
+    await new Promise<void>((resolve, reject) => {
       const proc = ffmpeg(imagesStream)
         .withInputFps(fps)
         .output(path, { end: true })

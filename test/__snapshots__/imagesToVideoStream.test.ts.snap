@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Images to video stream Should convert images to video: mp4 1`] = `"LB2061+SOHgILLLkkTiZf03697lJJIjToQWK8jQlvhM="`;
+exports[`Images to video stream Should convert images to video: mp4 1`] = `"jE/kbhnyiz80ABTqh0+5ttxUyVxi0tCHE9pXwOjEgOg="`;
 
-exports[`Images to video stream Should convert images to video: wmv 1`] = `"pcVhb8WV1zQglH7jJAoJ0JIbbUTgtZN9ckLKnBIH83M="`;
+exports[`Images to video stream Should convert images to video: wmv 1`] = `"gzR9E/1x/BPCMIXDu+JNMxTLJB3d+buVDN9Kw+roFYg="`;
