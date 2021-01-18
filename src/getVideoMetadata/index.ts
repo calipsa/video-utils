@@ -16,6 +16,6 @@ export default async (input: Input) => {
     await fsPromises.writeFile(path, input, 'binary')
     return await getMetadata(path)
   } finally {
-    cleanup()
+    await cleanup()
   }
 }
