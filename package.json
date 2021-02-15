@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest --no-cache",
+    "test-cli": "ts-node test/getVideoSnapshots",
     "lint": "eslint './src/**/*.ts'",
     "build": "rm -rf dist && tsc",
     "version": "npm run build",
@@ -40,6 +41,7 @@
     "lodash": "^4.17.20",
     "np": "^7.2.0",
     "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
